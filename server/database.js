@@ -32,16 +32,3 @@ var insertReturn = exports.insertReturn = function(email) {
   });
 
 };
-
-var getFlaggedEmails = exports.getFlaggedEmails = function(cb) {
-  console.log('triggered');
-  var queryString = 'SELECT * FROM emailList';
-  db.all(queryString, function(err, rows) {
-    if (err) {
-      console.log('err');
-    }
-
-    console.log('rows fetched, running callback');
-    cb(rows);
-  })
-}
