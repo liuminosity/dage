@@ -26,15 +26,11 @@ export function applicationLoaded(data) {
     });
 
     var token = window.localStorage.getItem('dage-token');
-    console.log('this is token', JSON.stringify(token));
     return request
-      .post(serverUrl + '/userAuth')
-      .send({
-        token: token,
-      })
+      .post(/*TODO: fill in with correct user (NOT TOKEN!) url*/)
+      .send(JSON.stringify(token))
       .end((err, res={}) => {
         const { body } = res;
-        console.log('res.body', body);
 
         err || res.body.error ?
           dispatch(userFetchError()) :
@@ -44,6 +40,10 @@ export function applicationLoaded(data) {
   };
 }
 
+<<<<<<< 029e3ae978423040a75c5cf4dccda6dcd555bb3e:src/actions/userSession.js
+=======
+
+>>>>>>> [feat] (server): add local storage of tokens (still not functional):src/actions/users.js
 export function submitLogin(data) {
   return dispatch => {
     dispatch({
@@ -55,6 +55,7 @@ export function submitLogin(data) {
       .post(serverUrl + '/userLogin')
       .send(data)
       .end((err, res) => {
+<<<<<<< 029e3ae978423040a75c5cf4dccda6dcd555bb3e:src/actions/userSession.js
         if (err) {
           dispatch(loginFailed());
         } else {
@@ -67,6 +68,14 @@ export function submitLogin(data) {
         }
 
         // window.location.reload();
+=======
+        err ?
+          dispatch(loginFailed()) :
+
+          //TODO: change token to body.token or whatever the server sends back
+          window.localStorage.setItem('dage-token', res.body.token);
+          window.location.reload();
+>>>>>>> [feat] (server): add local storage of tokens (still not functional):src/actions/users.js
       });
   };
 }
@@ -78,9 +87,14 @@ export function loginFailed(error) {
   };
 }
 
+<<<<<<< 029e3ae978423040a75c5cf4dccda6dcd555bb3e:src/actions/userSession.js
 //body should be server response from
 export function userFetchSuccess(body) {
   console.log('user fetch success');
+=======
+
+export function userFetchSuccess(token) {
+>>>>>>> [feat] (server): add local storage of tokens (still not functional):src/actions/users.js
   return {
     type: USER_FETCH_SUCCEEDED,
     payload: {
