@@ -12,44 +12,26 @@ import {
   TOKEN_DELETE_FAILED,
 } from 'constants/users';
 
-
-const initialState = {
-  authenticated: false,
-  username: null
-};
-
-export default function (state = initialState, action = {}) {
-
-  const { data, type } = action;
-
-  switch (type) {
-    case USER_FETCH_SUCCEEDED:
-      return {
-        ...state,
-        authenticated: true,
-        username: data.username,
-      };
-
-    case TOKEN_DELETE_FAILED:
-      return {
-        ...state,
-        authenticated: false,
-      };
-
-    default:
-      return state;
-  }
-
-}
-
 const initialState = {
   authenticated: false,
   username: null,
 };
 
-export default  createReducer(initialState, {
+export default createReducer(initialState, {
+  [USER_FETCH_SUCCEEDED]: (state, payload) => {
+    return {
+      ...state,
+      authenticated: true,
+      username: payload.username,
+      level: payload.level,
+    }
+  },
 
-
-
+  [TOKEN_DELETED]: (state, payload) => {
+    return {
+      ...state,
+      authenticated: false,
+    }
+  },
 
 })
