@@ -10,7 +10,7 @@ var HomeHeader = React.createClass({
             <div className="header-content-inner">
                 <h1 style={{'fontSize':'4em'}}>D<span style={{'fontSize':'.8em'}}>Ä</span>GE</h1>
                 <hr/>
-                <h3><span style={{'color':'#fff'}}>Intelligently monitor and protect your outbound emails</span></h3>
+                <h3><span style={{'color':'#fff'}}>Intelligently monitor and protect your company's outbound emails </span></h3>
                 <hr/>
                 <a href="#about" className="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>

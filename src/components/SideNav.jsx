@@ -26,6 +26,9 @@ var SideNav = React.createClass({
 
     const manageUserBlock = (userPermissionGroup === "admin") ?
       <li className='nav__item site-nav--contact'><a onClick={ this.navigateManageUserRoute }>Manage User<i className='icon--contact'></i></a></li> : <div/>;
+    const customizeBlock = (userPermissionGroup === "admin") ?
+      <li className='nav__item nav__item--has-child site-nav--company'><a onClick={ this.navigateCustomizeRoute }>Customize<i className='icon--company'></i></a></li> : <div/>;
+
 
     return (
       <div className='page-wrapper'>
@@ -45,7 +48,7 @@ var SideNav = React.createClass({
                   <li className='nav__item nav__item--has-child site-nav--products'><a onClick={ this.navigateAlertsRoute }>Alerts ({this.props.numEmails})<i className='icon--products'></i></a></li>
                   <li className='nav__item nav__item--has-child site-nav--products'><a onClick={ this.navigateAllEmailsRoute }>All Emails<i className='icon--products'></i></a></li>
                   <li className='nav__item nav__item--has-child site-nav--products'><a onClick={ this.navigateMLEmailsRoute }>DägeWatch<i className='icon--products'></i></a></li>
-                  <li className='nav__item nav__item--has-child site-nav--company'><a onClick={ this.navigateCustomizeRoute }>Customize<i className='icon--company'></i></a></li>
+                  { customizeBlock }
                   { manageUserBlock }
                 </ul>
               

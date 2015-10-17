@@ -1,5 +1,5 @@
 var React = require('react');
-var Griddle = require('griddle-react');
+// var Griddle = require('griddle-react');
 var ReactBsTable = require("react-bootstrap-table");
 var BootstrapTable = ReactBsTable.BootstrapTable;
 var TableHeaderColumn = ReactBsTable.TableHeaderColumn;
@@ -34,6 +34,7 @@ var ManageUsers = React.createClass({
   ],
   addUserToState: function(data){
     this.props.callbacks._addUserToState(data);
+    
   },
   resetPassword: function(){
     this.props.callbacks._userPasswordReset(this.props.userInfo.username);
@@ -47,6 +48,9 @@ var ManageUsers = React.createClass({
   },
   addingUser: function(data) {
     this.props.callbacks._userAdd(data);
+    // console.log('hello world', this.props.callbacks);
+    // this.props.callbacks._navigationRouteSelect('manageUser');
+    console.log('after callback');
   },
   render: function() {
     var _this = this;

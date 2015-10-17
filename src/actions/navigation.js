@@ -10,6 +10,7 @@ import {
 } from './emails';
 
 export function navigationRouteSelect(route) {
+  console.log('triggered for route', route);
   if (route === 'allEmails') {
     return dispatch=> {
       dispatch(allEmailArrayFetch());

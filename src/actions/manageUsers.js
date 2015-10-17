@@ -21,6 +21,10 @@ import {
   ADD_USER_TO_STATE
 } from 'constants/manageUsers';
 
+import {
+  navigationRouteSelect,
+} from './navigation';
+
 //username, permissionGroup, name, title, email, department, managerID, active
 
 // var data = {
@@ -55,6 +59,7 @@ export function userAdd(data) {
         } else {
           if (res.body.message === 'user added') {
             dispatch(userAddSuccess(data));
+            dispatch(navigationRouteSelect('manageUser'));
           } else {
             console.log('Failed to add user');
             dispatch(userAddFailed(err));
